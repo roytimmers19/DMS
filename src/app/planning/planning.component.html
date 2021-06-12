@@ -1,0 +1,30 @@
+<planning-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
+</planning-utils-calendar-header>
+
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    *ngSwitchCase="'month'"
+    [viewDate]="viewDate"
+    [events]="events"
+    (dayClicked)="changeDay($event.day.date)"
+    (eventClicked)="eventClicked($event)"
+  >
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="'week'"
+    [viewDate]="viewDate"
+    [events]="events"
+    (dayHeaderClicked)="changeDay($event.day.date)"
+    (eventClicked)="eventClicked($event)"
+    (hourSegmentClicked)="clickedDate($event.date)"
+  >
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="'day'"
+    [viewDate]="viewDate"
+    [events]="events"
+    (eventClicked)="eventClicked($event)"
+    (hourSegmentClicked)="clickedDate($event.date)"
+  >
+  </mwl-calendar-day-view>
+</div>
