@@ -1,1 +1,52 @@
-<p>user-rit works!</p>
+<div class="modal-header bg-primary text-white">
+  <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()" *ngIf="editForm">
+    <div class="form-group row d-flex justify-content-center align-items-center">
+      <label for="title" class="col-form-label col-sm-3 text-right">Title:</label>
+      <div class="col-sm-6">
+        <input type="text" formControlName="title" id="title" class="form-control" readonly/>
+        <div *ngIf="editFormData.title.invalid && (editFormData.title.dirty || editFormData.title.touched)"
+             class="alert-danger">
+          <span>Title is required!</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row d-flex justify-content-center align-items-center">
+      <label for="start" class="col-form-label col-sm-3 text-right">Start date:</label>
+      <div class="col-sm-6">
+        <input type="datetime-local" formControlName="start" id="start" class="form-control" (blur)="validateForm()"
+               min="{{minDate}}" max="{{maxDate}}"/>
+        <div *ngIf="editFormData.start.invalid && (editFormData.start.dirty || editFormData.start.touched)"
+             class="alert-danger">
+          <span>Start date is required!</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row d-flex justify-content-center align-items-center">
+      <label for="end" class="col-form-label col-sm-3 text-right">End date:</label>
+      <div class="col-sm-6">
+        <input type="datetime-local" formControlName="end" id="end" class="form-control" (blur)="validateForm()"
+               min="{{minDate}}" max="{{maxDate}}"/>
+        <div *ngIf="editFormData.end.invalid && (editFormData.end.dirty || editFormData.end.touched)"
+             class="alert-danger">
+          <span>End date is required!</span>
+        </div>
+        <div *ngIf="editFormData.end > selectedRit.end"
+             class="alert-danger">
+          <span>End date after initial end date</span>
+        </div>
+        <div *ngIf="error.isError" class="alert alert-danger">
+          <span>{{ error.errorMessage }}</span>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="modal-footer">
+    <button [disabled]="isLoading" *ngIf="error.isError == false" class="btn btn-primary mr-2" (click)="onSubmit()">
+      {{buttonTitle}}
+    </button>
+    <button [disabled]="isLoading" class="btn btn-primary mr-2" (click)="modal.close('Cancel')">Cancel</button>
+  </div>
+</div>

@@ -3,8 +3,7 @@ import { CalendarView } from 'angular-calendar';
 
 @Component({
   selector: 'planning-utils-calendar-header',
-  templateUrl: './calendar-header.component.html',
-  styleUrls: ['./calendar-header.component.scss']
+  templateUrl: './calendar-header.component.html'
 })
 export class CalendarHeaderComponent {
   @Input() view: CalendarView;
