@@ -8,7 +8,6 @@ import {RitService} from "@app/_services/rit.service";
 @Component({
   selector: 'app-admin-rit',
   templateUrl: './admin-rit.component.html',
-  styleUrls: ['./admin-rit.component.scss']
 })
 export class AdminRitComponent implements OnInit {
   title;

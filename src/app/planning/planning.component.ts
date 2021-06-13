@@ -17,7 +17,6 @@ import {UserRitComponent} from "@app/user-rit/user-rit.component";
   selector: 'app-planning',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './planning.component.html',
-  styleUrls: ['./planning.component.scss']
 })
 export class PlanningComponent {
   view: CalendarView = CalendarView.Month;

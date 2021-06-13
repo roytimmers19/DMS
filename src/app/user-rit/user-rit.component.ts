@@ -8,7 +8,6 @@ import {RitService} from "@app/_services/rit.service";
 @Component({
   selector: 'app-user-rit',
   templateUrl: './user-rit.component.html',
-  styleUrls: ['./user-rit.component.scss']
 })
 export class UserRitComponent implements OnInit {
 
